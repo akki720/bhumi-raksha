@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #020b14;
+  --bg-surface: #0b1724;
+  --panel: rgba(15, 23, 42, 0.8);
+  --panel-strong: rgba(15, 23, 42, 0.96);
+  --panel-soft: rgba(18, 35, 52, 0.7);
+  --border: rgba(148, 163, 184, 0.18);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --sky: #38bdf8;
+  --cyan: #22d3ee;
+  --emerald: #34d399;
+  --amber: #fbbf24;
+  --rose: #fb7185;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.15), transparent 25%),
+    var(--bg-deep);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.leaflet-container {
+  background: #0b1220 !important;
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-slate-900/70 backdrop-blur-xl shadow-[0_20px_60px_rgba(14,116,144,0.12)];
+  }
+
+  .soft-card {
+    @apply rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-md shadow-[0_18px_40px_rgba(2,6,23,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-400/40 hover:shadow-[0_24px_60px_rgba(14,116,144,0.18)];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-300 bg-clip-text text-transparent;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.28);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
